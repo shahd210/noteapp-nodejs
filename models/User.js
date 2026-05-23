@@ -1,5 +1,6 @@
 //call mongoose
-const mogoose = require("mongoose")
+const { required } = require("joi");
+const mongoose = require("mongoose")
 //create schema
 const userSchema = new mongoose.Schema({
  username:{
@@ -16,6 +17,10 @@ const userSchema = new mongoose.Schema({
  password:{
      type:String ,
     required: true ,
+ },
+ profileImage:{
+    type:String,
+    required:true
  }
 }
     ,{timestamps:true})

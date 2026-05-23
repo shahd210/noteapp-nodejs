@@ -19,8 +19,15 @@ async function DBconnection() {
         
     }
 }
+
+const authRoutes = require("./routes/authRoutes")
+const noteRoutes = require("./routes/noteRoutes")
+
+app.use ("/api",authRoutes)
+app.use ("/api", noteRoutes)
+
 DBconnection();
 //run server 
 app.listen(port , ()=>{
     console.log(`server is running on port ${port}`)
-} )
+})
