@@ -1,6 +1,5 @@
 //call mongoose
-const { default: mongoose } = require("mongoose");
-const mogoose = require("mongoose")
+const mongoose = require("mongoose")
 //create schema
 const noteSchema = new mongoose.Schema({
  content:{

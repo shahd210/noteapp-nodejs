@@ -1,6 +1,6 @@
 const User =require("../models/User")
 const Note =require("../models/Note")
-const noteSchema =require("./validation/noteValidation")
+const {noteSchema} =require("./validation/noteValidation")
 
 const postNoteController = async (req ,res ,next)=>{
 
