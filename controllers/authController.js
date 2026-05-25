@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/User")
 const { registerSchema, loginSchema } = require("./validation/authValidation")
 
-const register = async (req, res) => {
+const register = async (req, res ,next) => {
     try {
         const { error, value } = registerSchema.validate(req.body, {
             abortEarly: false,
@@ -33,11 +33,11 @@ const register = async (req, res) => {
         res.status(201).json({ msg: "Done Create Account" })
 
     } catch (error) {
-        res.status(500).json({ msg: "server Error" })
+   next(error);
     }
 }
 
-const login = async (req, res) => {
+const login = async (req, res ,next) => {
     try {
         const { error, value } = loginSchema.validate(req.body, {
             abortEarly: false,
@@ -70,15 +70,15 @@ const login = async (req, res) => {
         })
 
     } catch (error) {
-        res.status(500).json({ msg: "server Error" })
+   next(error);
     }
 }
 
-const logout = async (req, res) => {
+const logout = async ( req, res,next) => {
     try {
         res.status(200).json({ msg: "logout success" })
-    } catch (error) {
-        res.status(500).json({ msg: "server error" })
+    } catch (error) { 
+       next(error)
     }
 }
 

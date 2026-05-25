@@ -22,11 +22,14 @@ async function DBconnection() {
 
 const authRoutes = require("./routes/authRoutes")
 const noteRoutes = require("./routes/noteRoutes")
-
+const userRoutes = require("./routes/userRoutes")
 app.use ("/api",authRoutes)
 app.use ("/api", noteRoutes)
-
+app.use ("/api" , userRoutes)
 DBconnection();
+
+const errorMiddleware =require("./middleware/errorMiddleware")
+app.use(errorMiddleware)
 //run server 
 app.listen(port , ()=>{
     console.log(`server is running on port ${port}`)

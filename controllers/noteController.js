@@ -2,7 +2,7 @@ const User =require("../models/User")
 const Note =require("../models/Note")
 const noteSchema =require("./validation/noteValidation")
 
-const postNoteController = async (req ,res)=>{
+const postNoteController = async (req ,res ,next)=>{
 
 try {
  //Joi =>  get data from front & validation 
@@ -31,9 +31,7 @@ res.status(201).json({
 
     
 } catch (error) {
-    res.status(500).json({
-        msg: "server error"
-    })
+   next(error);
 }
 
 }
